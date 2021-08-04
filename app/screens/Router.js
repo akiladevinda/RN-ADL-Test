@@ -13,9 +13,12 @@ const Router = (props) => {
   const {} = props;
 
   useEffect(() => {
-      setTimeout(() => {
-        navigationService.navigate('Dashboard');
-      }, 3000);
+    /* 
+    Check user already logged or not
+    */
+    setTimeout(() => {
+      navigationService.navigate('Dashboard');
+    }, 3000);
   }, []);
 
   return (

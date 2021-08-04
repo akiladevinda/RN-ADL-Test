@@ -9,6 +9,8 @@ import Login from '../../screens/login';
 import Register from '../../screens/register';
 import Router from '../../screens/Router';
 import Dashboard from '../../screens/dashboard';
+import Movies from '../../screens/movies';
+import Cart from '../../screens/cart';
 
 const Stack = createStackNavigator();
 
@@ -44,6 +46,20 @@ function NavigationStack() {
             component={Dashboard}
             options={{
               headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Movies"
+            component={Movies}
+            options={{
+              headerShown: true,
+            }}
+          />
+          <Stack.Screen
+            name="Cart"
+            component={Cart}
+            options={{
+              headerShown: true,
             }}
           />
       </Stack.Navigator>

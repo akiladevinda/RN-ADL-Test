@@ -39,8 +39,17 @@ const Dashboard = (props) => {
 
   
   const menuOnClickListner = (id) => {
-    alert(id)
-  
+    switch (id) {
+        case 1:
+          navigationService.navigate('Movies')
+          break;
+        case 2:
+          navigationService.navigate('Cart')
+          break;
+        default:
+          break;
+      }
+
   }
 
   return (
