@@ -53,11 +53,11 @@ const Login = (props) => {
               onChangeText={(userPassword) => setUserPassword(userPassword)}/>
         </View>
 
-        <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} onPress={() => this.onClickListener('login')}>
+        <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} onPress={() => navigationService.navigate('Dashboard')}>
           <Text style={styles.loginText}>Login</Text>
         </TouchableHighlight>
 
-        <TouchableHighlight style={styles.buttonContainer} onPress={() => this.onClickListener('restore_password')}>
+        <TouchableHighlight style={styles.buttonContainer}>
             <Text>Forgot your password?</Text>
         </TouchableHighlight>
 

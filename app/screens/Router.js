@@ -14,7 +14,7 @@ const Router = (props) => {
 
   useEffect(() => {
       setTimeout(() => {
-        navigationService.navigate('Login');
+        navigationService.navigate('Dashboard');
       }, 3000);
   }, []);
 
