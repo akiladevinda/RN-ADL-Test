@@ -4,8 +4,6 @@ import { loginAsync, changePassword } from "./authSaga";
 
 export default function* watch() {
     
-  yield takeEvery(types.LOGIN_USER, loginAsync);
-  yield takeEvery(types.CHANGE_PASSWORD, changePassword);
+  // yield takeEvery(types.LOGIN_USER, loginAsync);
 
-  
 }

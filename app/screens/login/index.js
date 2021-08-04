@@ -14,9 +14,10 @@ import { colors } from "../../config";
 import navigationService from "../../navigation/navigationService";
 import { useFocusEffect } from '@react-navigation/native';
 import { Images } from "../../config/images";
+import * as appActions from '../../redux/actions/appActions';
 
 const Login = (props) => { 
-  const {} = props;
+  const {setUserLoginStatus} = props;
 
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
@@ -32,6 +33,16 @@ const Login = (props) => {
         BackHandler.removeEventListener('hardwareBackPress', onBackPress);
     }, []),
   );
+
+  const handleUserLogin = () => {
+      if(!userEmail || !userPassword){
+        alert('Please enter valid data')
+      }else{  
+        alert('Login Successfull');
+        navigationService.navigate('Dashboard')
+        setUserLoginStatus(true);
+      }
+  }
 
   return (
     <View style={styles.container}>
@@ -53,7 +64,7 @@ const Login = (props) => {
               onChangeText={(userPassword) => setUserPassword(userPassword)}/>
         </View>
 
-        <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} onPress={() => navigationService.navigate('Dashboard')}>
+        <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} onPress={handleUserLogin}>
           <Text style={styles.loginText}>Login</Text>
         </TouchableHighlight>
 
@@ -123,7 +134,7 @@ const mapStateToProps = (state) => {
 
 function mapDispatchToProps(dispatch) {
   return {
-  
+    setUserLoginStatus: (payload) => dispatch(appActions.setUserLoginStatus(payload)),
   };
 }
 

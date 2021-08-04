@@ -19,9 +19,12 @@ const Movies = (props) => {
   const {} = props;
 
   const [moviesArray, setTheArray] = useState([ 
-    {id:1, name: "Movie Name",},
-    {id:2, name: "View Cart", },
-    {id:3, name: "Log Out", },
+    {id:1, name: "Fast and Furious",},
+    {id:2, name: "Kong vs Godzilla", },
+    {id:3, name: "Hitman", },
+    {id:4, name: "Venom", },
+    {id:5, name: "Batman", },
+    {id:6, name: "Avengers", },
     ]);
 
   return (

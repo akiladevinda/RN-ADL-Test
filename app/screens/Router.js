@@ -10,14 +10,19 @@ import { Images } from '../config/images';
 
 //Do not delete unwanted imports 
 const Router = (props) => {
-  const {} = props;
+  const {isUserLoggedIn} = props;
 
   useEffect(() => {
     /* 
     Check user already logged or not
     */
     setTimeout(() => {
-      navigationService.navigate('Dashboard');
+      if(isUserLoggedIn == true){
+        navigationService.navigate('Dashboard');
+      }else{
+        navigationService.navigate('Login');
+      }
+     
     }, 3000);
   }, []);
 
@@ -46,7 +51,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
   return {
-
+    isUserLoggedIn: state.appReducer.isUserLoggedIn,
   };
 };
 
