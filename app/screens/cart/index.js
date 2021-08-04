@@ -15,21 +15,14 @@ import { useFocusEffect } from '@react-navigation/native';
 import { Images } from "../../config/images";
 
 const Cart = (props) => { 
-  const {} = props;
-
-  const [userArray, setTheArray] = useState([ 
-    {id:1, name: "Movie Name",},
-    {id:2, name: "View Cart", },
-    {id:3, name: "Log Out", },
-    ]);
-
+  const {userCart} = props;
   return (
     <View style={styles.container}>
     <View style={styles.body}>
         <FlatList 
             style={styles.container} 
             enableEmptySections={true}
-            data={userArray}
+            data={userCart}
             keyExtractor= {(item) => {
             return item.id;
             }}
@@ -94,7 +87,7 @@ export const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
   return {
-
+    userCart: state.cartReducer.userCart,
   };
 };
 

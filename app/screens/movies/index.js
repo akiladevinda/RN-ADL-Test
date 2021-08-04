@@ -14,9 +14,16 @@ import { colors } from "../../config";
 import navigationService from "../../navigation/navigationService";
 import { useFocusEffect } from '@react-navigation/native';
 import { Images } from "../../config/images";
+import * as cartActions from '../../redux/actions/cartActions';
 
 const Movies = (props) => { 
-  const {moviesArray} = props;
+  const {moviesArray,updateShoppingCart} = props;
+
+  const addToCart = (item) => {
+    console.log("🚀 ~ file: index.js ~ line 22 ~ addToCart ~ item", item)
+    updateShoppingCart(item);
+    alert('Movie added to your cart')
+  }
   return (
     <View style={styles.container}>
     <FlatList style={styles.list}
@@ -36,7 +43,7 @@ const Movies = (props) => {
             <View style={styles.cardFooter}>
               <View style={{alignItems:"center", justifyContent:"center"}}>
                 <Text style={styles.name}>{item.name}</Text>
-                <TouchableOpacity style={styles.followButton} onPress={()=> this.clickEventListener(item)}>
+                <TouchableOpacity style={styles.followButton} onPress={()=> addToCart(item)}>
                   <Text style={styles.followButtonText}>Add to Cart</Text>  
                 </TouchableOpacity>
               </View>
@@ -145,7 +152,7 @@ const mapStateToProps = (state) => {
 
 function mapDispatchToProps(dispatch) {
   return {
-  
+    updateShoppingCart: (payload) => dispatch(cartActions.updateShoppingCart(payload)),
   };
 }
 
