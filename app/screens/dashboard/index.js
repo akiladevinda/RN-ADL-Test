@@ -48,12 +48,28 @@ const Dashboard = (props) => {
           navigationService.navigate('Cart')
           break;
         case 3:
-          setUserLogout(true)
+          Alert.alert(
+            "Log out",
+            "Are you sure want to log out?",
+            [
+              {
+                text: "Cancel",
+                onPress: () => console.log("Cancel Pressed"),
+                style: "cancel"
+              },
+              { text: "YES", onPress: userLogOutSuccessCallback }
+            ]
+          );
           break;
         default:
           break;
       }
 
+  }
+
+  const userLogOutSuccessCallback = () => {
+    setUserLogout(true)
+    navigationService.navigate('Login')
   }
 
   return (
