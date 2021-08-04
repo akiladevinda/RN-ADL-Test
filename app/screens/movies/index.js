@@ -15,20 +15,48 @@ import navigationService from "../../navigation/navigationService";
 import { useFocusEffect } from '@react-navigation/native';
 import { Images } from "../../config/images";
 import * as cartActions from '../../redux/actions/cartActions';
+import * as movieActions from '../../redux/actions/movieActions';
+import {Picker} from '@react-native-picker/picker';
 
 const Movies = (props) => { 
   const {moviesArray,updateShoppingCart} = props;
-
+  const [selectedCategory, setSelectedMovie] = useState();
+  const [isFilter, setIsFilter] = useState(false);
+  const [filterdResults, setFilteredResults] = useState([]);
+  
   const addToCart = (item) => {
     console.log("🚀 ~ file: index.js ~ line 22 ~ addToCart ~ item", item)
     updateShoppingCart(item);
     alert('Movie added to your cart')
   }
+
+  const filterMovieByCategoryHandler = (category) => {
+    setSelectedMovie(category);
+    if(category == 'All'){
+      setIsFilter(false);
+    }else{
+      setIsFilter(true);
+      const finalArray = moviesArray.filter(moviesArray => moviesArray.category === category);
+      console.log("🚀 ~  ~ finalArray", finalArray)
+      setFilteredResults(finalArray);
+    }
+  }
   return (
     <View style={styles.container}>
+    <Picker
+      selectedValue={selectedCategory}
+      onValueChange={(itemValue, itemIndex) =>
+        filterMovieByCategoryHandler(itemValue)
+      }>
+      <Picker.Item label="All" value="All" />
+      <Picker.Item label="Action" value="Action" />
+      <Picker.Item label="Shooting" value="Shooting" />
+      <Picker.Item label="Crime" value="Crime" />
+    </Picker>
+
     <FlatList style={styles.list}
       contentContainerStyle={styles.listContainer}
-      data={moviesArray}
+      data={isFilter ? filterdResults : moviesArray}
       horizontal={false}
       numColumns={2}
       keyExtractor= {(item) => {
@@ -43,6 +71,7 @@ const Movies = (props) => {
             <View style={styles.cardFooter}>
               <View style={{alignItems:"center", justifyContent:"center"}}>
                 <Text style={styles.name}>{item.name}</Text>
+                <Text style={styles.name}>{item.category}</Text>
                 <TouchableOpacity style={styles.followButton} onPress={()=> addToCart(item)}>
                   <Text style={styles.followButtonText}>Add to Cart</Text>  
                 </TouchableOpacity>
@@ -153,6 +182,7 @@ const mapStateToProps = (state) => {
 function mapDispatchToProps(dispatch) {
   return {
     updateShoppingCart: (payload) => dispatch(cartActions.updateShoppingCart(payload)),
+    filteeMovieByCategory: (payload) => dispatch(movieActions.filteeMovieByCategory(payload)),
   };
 }
 

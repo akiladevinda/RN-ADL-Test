@@ -1191,6 +1191,11 @@
   "resolved" "https://registry.npmjs.org/@react-native-community/netinfo/-/netinfo-5.9.6.tgz"
   "version" "5.9.6"
 
+"@react-native-picker/picker@^1.16.4":
+  "integrity" "sha512-V/8XNlTU3QJ/mdY+mCQnuCCZJfIOpgfSnfFDinftWDi66mGuf6tRd+sfCOeKqjug38sdJm9CeNry/66W0EYodw=="
+  "resolved" "https://registry.npmjs.org/@react-native-picker/picker/-/picker-1.16.4.tgz"
+  "version" "1.16.4"
+
 "@react-navigation/core@^5.12.3":
   "integrity" "sha512-aEOTAw4FRRNsNu6F9ibLk3SVSs4Res8BI832NEZN6qUto5ZgtuYnQHWeWV2cZ43Nc9KvUyQC/vXvO2RScwgFwA=="
   "resolved" "https://registry.npmjs.org/@react-navigation/core/-/core-5.12.3.tgz"
@@ -5965,7 +5970,7 @@
     "prop-types" "^15.7.2"
     "yargs" "^15.0.2"
 
-"react-native@0.63.2":
+"react-native@>=0.57", "react-native@0.63.2":
   "integrity" "sha512-MkxHeJorUDzmQwKJrTfrFYMDRLyu9GSBpsFFMDX7X+HglVnaZi3CTzW2mRv1eIcazoseBOP2eJe+bnkyLl8Y2A=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.63.2.tgz"
   "version" "0.63.2"
@@ -6024,7 +6029,7 @@
     "react-is" "^16.8.6"
     "scheduler" "^0.19.1"
 
-"react@16.13.1":
+"react@16 || 17", "react@16.13.1":
   "integrity" "sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w=="
   "resolved" "https://registry.npmjs.org/react/-/react-16.13.1.tgz"
   "version" "16.13.1"
