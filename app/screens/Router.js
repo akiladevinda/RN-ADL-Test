@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import {
   View,
   StyleSheet,
+  Image
 } from 'react-native';
 import navigationService from '../navigation/navigationService';
+import { Images } from '../config/images';
 
 //Do not delete unwanted imports 
 const Router = (props) => {
@@ -18,7 +20,7 @@ const Router = (props) => {
 
   return (
     <View style={styles.container}>
-
+        <Image style={styles.adlLogo} source={Images.ADL_LOGO}/>
     </View>
   );
 };
@@ -30,8 +32,13 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor:'blue'
+    backgroundColor:'white'
   },
+  adlLogo:{
+    width:"100%",
+    height:"60%",
+    resizeMode:'contain'
+  }
 });
 
 const mapStateToProps = (state) => {
