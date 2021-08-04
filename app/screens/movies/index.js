@@ -59,10 +59,11 @@ export const styles = StyleSheet.create({
     container:{
         flex:1,
         marginTop:20,
+        backgroundColor:'white'
       },
       list: {
         paddingHorizontal: 5,
-        backgroundColor:"#E6E6E6",
+        backgroundColor:'white'
       },
       listContainer:{
        alignItems:'center'

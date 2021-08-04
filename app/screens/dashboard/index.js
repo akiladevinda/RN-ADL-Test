@@ -86,7 +86,7 @@ export const styles = StyleSheet.create({
       },
       list: {
         paddingHorizontal: 5,
-        backgroundColor:"#E6E6E6",
+        backgroundColor:"white",
       },
       listContainer:{
         alignItems:'center'

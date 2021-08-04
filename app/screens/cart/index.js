@@ -4,12 +4,10 @@ import {
     StyleSheet,
     Text,
     View,
-    TouchableOpacity,
     Image,
-    Alert,
     ScrollView,
-    FlatList,
-    Button,
+    TouchableOpacity,
+    FlatList
   } from 'react-native';
 import { colors } from "../../config";
 import navigationService from "../../navigation/navigationService";
@@ -19,126 +17,78 @@ import { Images } from "../../config/images";
 const Cart = (props) => { 
   const {} = props;
 
+  const [userArray, setTheArray] = useState([ 
+    {id:1, name: "Movie Name",},
+    {id:2, name: "View Cart", },
+    {id:3, name: "Log Out", },
+    ]);
+
   return (
     <View style={styles.container}>
-      <ScrollView>
-          <View style={{alignItems:'center', marginHorizontal:30}}>
-            <Image style={styles.productImg} source={Images.DASH_MOVIES}/>
-            <Text style={styles.name}>Super Soft T-Shirt</Text>
-            <Text style={styles.price}>$ 12.22</Text>
-            <Text style={styles.description}>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-              Aenean commodo ligula eget dolor. Aenean massa. Cum sociis 
-              natoque penatibus et magnis dis parturient montes, 
-              nascetur ridiculus mus. Donec quam felis, ultricies nec
-            </Text>
-          </View>
-          <View style={styles.starContainer}>
-            <Image style={styles.star} source={{uri:"https://img.icons8.com/color/40/000000/star.png"}}/>
-            <Image style={styles.star} source={{uri:"https://img.icons8.com/color/40/000000/star.png"}}/>
-            <Image style={styles.star} source={{uri:"https://img.icons8.com/color/40/000000/star.png"}}/>
-            <Image style={styles.star} source={{uri:"https://img.icons8.com/color/40/000000/star.png"}}/>
-            <Image style={styles.star} source={{uri:"https://img.icons8.com/color/40/000000/star.png"}}/>
-          </View>
-          <View style={styles.separator}></View>
-          <View style={styles.addToCarContainer}>
-            <TouchableOpacity style={styles.shareButton} onPress={()=> this.clickEventListener()}>
-              <Text style={styles.shareButtonText}>Add To Cart</Text>  
-            </TouchableOpacity>
-          </View> 
-        </ScrollView>
+    <View style={styles.body}>
+        <FlatList 
+            style={styles.container} 
+            enableEmptySections={true}
+            data={userArray}
+            keyExtractor= {(item) => {
+            return item.id;
+            }}
+            renderItem={({item}) => {
+            return (
+                <TouchableOpacity>
+                <View style={styles.box}>
+                    <Image style={styles.image} source={Images.DASH_MOVIES}/>
+                    <Text style={styles.username}>{item.name}</Text>
+                    <View style={styles.iconContent}>
+                    <Image style={styles.icon} source={Images.CART_DELETE}/>
+                    </View>
+                </View>
+                </TouchableOpacity>
+            )
+        }}/>
+     </View>
       </View>
   );
 };
 
 export const styles = StyleSheet.create({
-    container:{
-        flex:1,
-        marginTop:20,
-        backgroundColor:'white'
+    image:{
+        width: 60,
+        height: 60,
       },
-      productImg:{
-        width:200,
-        height:200,
+      body: {
+        padding:30,
       },
-      name:{
-        fontSize:28,
-        color:"#696969",
-        fontWeight:'bold'
+      box: {
+        marginTop:5,
+        marginBottom:5,
+        backgroundColor: '#FFFFFF',
+        flexDirection: 'row',
+        shadowColor: 'black',
+        shadowOpacity: .2,
+        shadowOffset: {
+          height:1,
+          width:-2
+        },
+        elevation:2
       },
-      price:{
-        marginTop:10,
+      username:{
+        color: "black",
         fontSize:18,
-        color:"green",
-        fontWeight:'bold'
+        alignSelf:'center',
+        marginLeft:10
       },
-      description:{
-        textAlign:'center',
-        marginTop:10,
-        color:"#696969",
-      },
-      star:{
-        width:40,
-        height:40,
-      },
-      btnColor: {
-        height:30,
-        width:30,
-        borderRadius:30,
-        marginHorizontal:3
-      },
-      btnSize: {
-        height:40,
-        width:40,
-        borderRadius:40,
-        borderColor:'#778899',
-        borderWidth:1,
-        marginHorizontal:3,
-        backgroundColor:'white',
-    
-        flexDirection: 'row',
-        justifyContent: 'center',
+      iconContent:{
+        width: 60,
+        height: 60,
+        // backgroundColor: '#40E0D0',
+        marginLeft: 'auto',
         alignItems: 'center',
+        justifyContent:'center'
       },
-      starContainer:{
-        justifyContent:'center', 
-        marginHorizontal:30, 
-        flexDirection:'row', 
-        marginTop:20
-      },
-      contentColors:{ 
-        justifyContent:'center', 
-        marginHorizontal:30, 
-        flexDirection:'row', 
-        marginTop:20
-      },
-      contentSize:{ 
-        justifyContent:'center', 
-        marginHorizontal:30, 
-        flexDirection:'row', 
-        marginTop:20
-      },
-      separator:{
-        height:2,
-        backgroundColor:"#eeeeee",
-        marginTop:20,
-        marginHorizontal:30
-      },
-      shareButton: {
-        marginTop:10,
-        height:45,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius:30,
-        backgroundColor: "#00BFFF",
-      },
-      shareButtonText:{
-        color: "#FFFFFF",
-        fontSize:20,
-      },
-      addToCarContainer:{
-        marginHorizontal:30
+      icon:{
+        width: 30,
+        height: 30,
       }
 });
 

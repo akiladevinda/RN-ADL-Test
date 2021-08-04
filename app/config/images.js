@@ -8,4 +8,5 @@ export const Images = {
   DASH_MOVIES: require(`${IMAGE_PATH}/ic-movie.png`),
   DASH_CART: require(`${IMAGE_PATH}/ic-cart.png`),
   DASH_LOGOUT: require(`${IMAGE_PATH}/ic-logout.png`),
+  CART_DELETE: require(`${IMAGE_PATH}/ic-delete.png`),
 };
