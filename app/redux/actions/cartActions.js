@@ -6,3 +6,10 @@ export function updateShoppingCart(payload) {
     payload: payload
   };
 }
+
+export function removeFromCart(payload) {
+  return {
+    type: types.REMOVE_FROM_CART,
+    payload: payload
+  };
+}

@@ -13,9 +13,15 @@ import { colors } from "../../config";
 import navigationService from "../../navigation/navigationService";
 import { useFocusEffect } from '@react-navigation/native';
 import { Images } from "../../config/images";
+import * as cartActions from '../../redux/actions/cartActions';
 
 const Cart = (props) => { 
-  const {userCart} = props;
+  const {userCart,removeFromCart} = props;
+
+  const removeFromCartHandler = (id) => {
+    console.log("🚀 ~ file: index.js ~ line 21 ~ removeFromCart ~ id", id)
+    removeFromCart(id)
+  }
   return (
     <View style={styles.container}>
     <View style={styles.body}>
@@ -33,7 +39,9 @@ const Cart = (props) => {
                     <Image style={styles.image} source={Images.DASH_MOVIES}/>
                     <Text style={styles.username}>{item.name}</Text>
                     <View style={styles.iconContent}>
+                    <TouchableOpacity onPress={()=> removeFromCartHandler(item.id)}>
                     <Image style={styles.icon} source={Images.CART_DELETE}/>
+                    </TouchableOpacity>
                     </View>
                 </View>
                 </TouchableOpacity>
@@ -93,7 +101,7 @@ const mapStateToProps = (state) => {
 
 function mapDispatchToProps(dispatch) {
   return {
-  
+    removeFromCart: (payload) => dispatch(cartActions.removeFromCart(payload)),
   };
 }
 

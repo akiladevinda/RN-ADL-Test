@@ -13,4 +13,11 @@ export const cartReducer = createReducer(initialState, {
           userCart: [...state.userCart, action.payload]
         };
     },
+    
+    [types.REMOVE_FROM_CART](state, action) {
+      return {
+        ...state,
+        userCart: state.userCart.filter(userCart => userCart.id !== action.payload) 
+      };
+  },
 });
