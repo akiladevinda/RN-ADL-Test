@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from 'react';
 import { connect } from "react-redux";
 import {
     StyleSheet,
@@ -17,6 +17,9 @@ import { Images } from "../../config/images";
 
 const Login = (props) => { 
   const {} = props;
+
+  const [userEmail, setUserEmail] = useState('');
+  const [userPassword, setUserPassword] = useState('');
 
   useFocusEffect(
     React.useCallback(() => {
@@ -38,7 +41,7 @@ const Login = (props) => {
               placeholder="Email"
               keyboardType="email-address"
               underlineColorAndroid='transparent'
-              onChangeText={(email) => this.setState({email})}/>
+              onChangeText={(userEmail) => setUserEmail(userEmail)}/>
         </View>
         
         <View style={styles.inputContainer}>
@@ -47,7 +50,7 @@ const Login = (props) => {
               placeholder="Password"
               secureTextEntry={true}
               underlineColorAndroid='transparent'
-              onChangeText={(password) => this.setState({password})}/>
+              onChangeText={(userPassword) => setUserPassword(userPassword)}/>
         </View>
 
         <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} onPress={() => this.onClickListener('login')}>
