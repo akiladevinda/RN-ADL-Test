@@ -13,14 +13,14 @@ git clone -b develop git@github.com:akiladevinda/RN-ADL-Test.git
 2.Run npm install or yarn install command to install packages
 
 ```sh
-cd intervest-app
+cd app
 npm install
 ```
 
 or
 
 ```sh
-cd intervest-app
+cd app
 yarn install
 ```
 
