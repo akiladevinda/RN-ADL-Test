@@ -16,17 +16,7 @@ import { useFocusEffect } from '@react-navigation/native';
 import { Images } from "../../config/images";
 
 const Movies = (props) => { 
-  const {} = props;
-
-  const [moviesArray, setTheArray] = useState([ 
-    {id:1, name: "Fast and Furious",},
-    {id:2, name: "Kong vs Godzilla", },
-    {id:3, name: "Hitman", },
-    {id:4, name: "Venom", },
-    {id:5, name: "Batman", },
-    {id:6, name: "Avengers", },
-    ]);
-
+  const {moviesArray} = props;
   return (
     <View style={styles.container}>
     <FlatList style={styles.list}
@@ -149,7 +139,7 @@ export const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
   return {
-
+    moviesArray: state.movieReducer.moviesArray,
   };
 };
 
