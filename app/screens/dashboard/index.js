@@ -15,9 +15,10 @@ import { colors } from "../../config";
 import navigationService from "../../navigation/navigationService";
 import { useFocusEffect } from '@react-navigation/native';
 import { Images } from "../../config/images";
+import * as appActions from '../../redux/actions/appActions';
 
 const Dashboard = (props) => { 
-  const {} = props;
+  const {setUserLogout} = props;
 
   const [theArray, setTheArray] = useState([ 
   {id:1, title: "View Movies", image:Images.DASH_MOVIES},
@@ -45,6 +46,9 @@ const Dashboard = (props) => {
           break;
         case 2:
           navigationService.navigate('Cart')
+          break;
+        case 3:
+          setUserLogout(true)
           break;
         default:
           break;
@@ -151,7 +155,7 @@ const mapStateToProps = (state) => {
 
 function mapDispatchToProps(dispatch) {
   return {
-  
+    setUserLogout: (payload) => dispatch(appActions.setUserLogout(payload)),
   };
 }
 

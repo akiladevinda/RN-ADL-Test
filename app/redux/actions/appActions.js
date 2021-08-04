@@ -6,3 +6,10 @@ export function setUserLoginStatus(payload) {
     payload: payload
   };
 }
+
+export function setUserLogout(payload) {
+  return {
+    type: types.LOG_OUT_USER,
+    payload: payload
+  };
+}
